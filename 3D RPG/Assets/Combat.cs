@@ -31,7 +31,7 @@ public class Combat : MonoBehaviour
             Fight();
             
         }
-        if(!character.GetAlive())
+        if(!character.GetAlive() && character.GetTarget()!= null)
         {
             character.SetTarget(null);
             character.SetInCombat(false);
@@ -55,7 +55,7 @@ public class Combat : MonoBehaviour
                 timer -= Time.deltaTime;
                // anim.SetAnimation("basicAttack", false);
             }
-            if (character.GetDistance() <= 3.0f)//check if the player is in range of the target
+            if (character.GetDistance() <= 3.5f)//check if the player is in range of the target
             {
                 if (timer <= 0.0f)//swing at the target when timer is 0
                 {

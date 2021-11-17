@@ -44,7 +44,7 @@ public class BasicAttack : MonoBehaviour
                 timer -= Time.deltaTime;
                 //anim.SetAnimation("basicAttack", false);
             }
-            if (player.GetDistance() <= 3.0f)//check if the player is in range of the target
+            if (player.GetDistance() <= 3.5f)//check if the player is in range of the target
             {
                 if (timer <= 0.0f)//swing at the target when timer is 0
                 {
@@ -64,7 +64,14 @@ public class BasicAttack : MonoBehaviour
             }
         }
         else
+        {
+
+        }
+        {
+            if (timer <= 0.0f)
+                timer = 0.1f;
             player.SetInCombat(false);
+        }
     }
     public void StartAttack(bool b_)
     {
