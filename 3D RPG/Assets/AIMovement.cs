@@ -10,7 +10,7 @@ public class AIMovement : MonoBehaviour
     public Transform goal;
     NavMeshAgent navA;
     CallAnimation anim;
-    public Vector3 orgin;
+    public Transform orgin;
     float speed;
     Vector3 dest;
     void Start()
@@ -18,22 +18,24 @@ public class AIMovement : MonoBehaviour
         data = GetComponent<CharacterData>();
         navA = GetComponent<NavMeshAgent>();
         anim = GetComponentInChildren<CallAnimation>();
-        orgin =this.transform.position;
+        orgin =transform;
+        goal = transform;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (navA.velocity.z < 0.0f)
             speed = navA.velocity.z * -1;
         else
             speed = navA.velocity.z;
+
         if (data.GetAlive())
         {
-            if(data.GetTarget() != null && GetDistance() > 3.0f)
+            if(data.GetTarget() != null && GetDistance() > GetComponent<Combat>().reach)
             {
                
-                navA.destination = goal.position;
+                navA.SetDestination(goal.position);
                 if (navA.velocity.z > 0)
                 {
                     anim.SetAnimation("isWalking", true);
@@ -45,18 +47,20 @@ public class AIMovement : MonoBehaviour
                     
                 
             }
-            if(GetDistance() <= 3.5f && data.GetTarget() != null)
+            if(GetDistance() <= GetComponent<Combat>().reach && data.GetTarget() != null)
             {
                 anim.SetAnimation("isWalking", false);
+                navA.SetDestination(transform.position);
                 navA.velocity = Vector3.zero;
             }
-            if(data.GetTarget() == null)
-            {
-                
-                navA.destination = orgin;
-                anim.SetAnimation("Speed", speed);
-            }
             
+            
+        }
+        if (data.GetTarget() == null && data.GetAlive() == true)
+        {
+            //print("NoTarget");
+            navA.destination = orgin.position;
+            anim.SetAnimation("Speed", speed);
         }
         else if(data.GetAlive() == false)
         {
@@ -72,6 +76,8 @@ public class AIMovement : MonoBehaviour
         //    }
         //}
     }
+
+   
     private float GetDistance()
     {
         
@@ -84,5 +90,6 @@ public class AIMovement : MonoBehaviour
     public void RemoveTarget()
     {
         
+        goal = orgin;
     }
 }

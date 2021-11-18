@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.AI;
 using UnityEngine;
 
 public class CharacterData : MonoBehaviour
@@ -123,7 +124,7 @@ public class CharacterData : MonoBehaviour
 
     public void SetTarget(GameObject obj_)
     {
-        print(obj_);
+       
         target = obj_;
     }
 
@@ -135,6 +136,14 @@ public class CharacterData : MonoBehaviour
     public float GetDistance()
     {
         return distance;
+    }
+    public float GetDistance(Vector3 x_, Vector3 y_)
+    {
+        return (x_ - y_).magnitude;
+    }
+    public void ResetDistance()
+    {
+        distance = 0.0f;
     }
     public bool GetInCombat()
     {
@@ -164,13 +173,27 @@ public class CharacterData : MonoBehaviour
         isAlive = false;
         inCombat = false;
         //play death animation
-        
+        if(GetComponent<SphereCollider>())
+        GetComponent<SphereCollider>().enabled = false;
+
+        if (GetComponent<NavMeshAgent>())
+        {
+            GetComponent<AIMovement>().enabled = false;
+            GetComponent<NavMeshAgent>().enabled = false;
+        }
+
+
         anim.SetAnimation("Dead", true);
         if (GetInteractType() == 0)
         {
             bt_respawn.SetActive(true);
         }
-
+        StartCoroutine(Decay());
+    }
+    IEnumerator Decay()
+    {
+        yield return new WaitForSeconds(10.0f);
+        gameObject.SetActive(false);
     }
     public int RewardEXP()
     {

@@ -19,7 +19,7 @@ public class Movement : MonoBehaviour
     public float angle;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
-
+    float horizontal, vertical, strafe;
     CallAnimation anim;
    
     void Start()
@@ -32,13 +32,14 @@ public class Movement : MonoBehaviour
             jumpHeight = 10.0f;
         if (rotateSpeed == 0.0f)
             rotateSpeed = 10.0f;
-        
+
+        angle = transform.eulerAngles.y;
 
 
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (this.GetComponent<CharacterData>().GetAlive() == true)
         {
@@ -51,14 +52,9 @@ public class Movement : MonoBehaviour
                 velocity.y = -2f;
             }
 
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
-            float strafe = Input.GetAxisRaw("Strafe");
+            
 
-            if (Input.GetButtonDown("Jump") && isGrounded)
-            {
-                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            }
+            
 
             velocity.y += gravity * Time.deltaTime;
 
@@ -90,5 +86,18 @@ public class Movement : MonoBehaviour
         if(this.GetComponent<CharacterData>().GetAlive() == false)
             CC.enabled = false;
            
+    }
+    private void Update()
+    {
+        if (GetComponent<CharacterData>().GetAlive() == true)
+        {
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
+            strafe = Input.GetAxisRaw("Strafe");
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            }
+        }
     }
 }

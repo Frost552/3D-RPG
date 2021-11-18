@@ -9,7 +9,8 @@ public class Combat : MonoBehaviour
     
     CharacterData character;
     CallAnimation anim;
-    
+    public CharacterData target;
+    public float reach;
     public float timer;
     public float f_attackDelay;
     void Start()
@@ -19,7 +20,7 @@ public class Combat : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(character.GetTarget() != null && character.GetAlive())
         {
@@ -55,7 +56,7 @@ public class Combat : MonoBehaviour
                 timer -= Time.deltaTime;
                // anim.SetAnimation("basicAttack", false);
             }
-            if (character.GetDistance() <= 3.5f)//check if the player is in range of the target
+            if (character.GetDistance() <= reach)//check if the player is in range of the target
             {
                 if (timer <= 0.0f)//swing at the target when timer is 0
                 {

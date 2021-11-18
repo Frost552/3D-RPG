@@ -21,6 +21,7 @@ public class MouseInteract : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray, out hit, 100.0f))
             {
+                
                 SetTarget(hit.collider.gameObject);
                 //if(hit.collider.gameObject.GetComponent<QuestData>() != null)
                 //this.gameObject.GetComponent<QuestLog>().AddQuest(player.GetTarget().GetComponent<QuestData>().GetData());
