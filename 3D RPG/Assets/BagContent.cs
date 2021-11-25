@@ -32,6 +32,14 @@ public class BagContent : MonoBehaviour
     {
         item.i_amount++;
     }
+
+    public void DecrementAmount(int amount)
+    {
+        item.i_amount -= amount;
+        if (item.i_amount <= 0)
+            item = null;
+    }
+
     public Items GetItem()
     {
         return item;

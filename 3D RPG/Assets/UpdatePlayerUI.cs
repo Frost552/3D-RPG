@@ -6,8 +6,8 @@ using UnityEngine;
 public class UpdatePlayerUI : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Text t_name, t_health;
-    public Slider slide_health;
+    public Text t_name, t_health, t_exp, t_level;
+    public Slider slide_health, slider_exp;
     public Image spr_image;
     CharacterData uiData;
     void Start()
@@ -20,12 +20,16 @@ public class UpdatePlayerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateHealth();
+        UpdateUI();
     }
 
-    private void UpdateHealth()
+    private void UpdateUI()
     {
+        t_level.text = uiData.GetLevel().ToString();
+        t_exp.text = uiData.GetExp().ToString() + "/" + uiData.GetExpToNext().ToString();
         slide_health.maxValue = uiData.GetMaxHealth();
+        slider_exp.maxValue = uiData.GetExpToNext();
+        slider_exp.value = uiData.GetExp();
         t_health.text = uiData.GetHealth().ToString() + "/" + uiData.GetMaxHealth().ToString();
         if(uiData.GetHealth() != 0)
         slide_health.value = uiData.GetHealth();

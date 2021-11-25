@@ -7,17 +7,18 @@ using UnityEngine;
 public class CharacterData : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int i_health, i_healthMax, i_strength, i_dexterity, i_magicMod;
+    public int i_health, i_healthMax, i_strength, i_dexterity, i_magicMod, i_level;
     public Vector2 DamageRange;
     public string s_name;
     public Sprite img_icon;
     public GameObject target;
     public float distance;
-    public bool inCombat;
+    public bool inCombat, isQuestNPC;
     bool isAlive;
     int expMod = 1;
     public int i_EXP;
     public int i_EXPToNext;
+    private int i_money;
     CallAnimation anim;
     float timer;
     public GameObject bt_respawn;
@@ -34,6 +35,8 @@ public class CharacterData : MonoBehaviour
     public InteractType NPCType;
     void Start()
     {
+        if(GetComponentInChildren<Text>() != null)
+        GetComponentInChildren<Text>().text = s_name;
         anim = GetComponentInChildren<CallAnimation>();
         if(i_strength == 0)
         {
@@ -63,8 +66,7 @@ public class CharacterData : MonoBehaviour
         {
             distance =  (target.transform.position - transform.position).magnitude; //find the distance between the player and target IF the target is valid
         }
-        DamageRange.x = Mathf.RoundToInt(3 * (i_strength * .10f));
-        DamageRange.y = Mathf.RoundToInt(6 * (i_strength * .10f));
+        
 
         if (!inCombat && isAlive)
             HealthRegen();
@@ -91,6 +93,8 @@ public class CharacterData : MonoBehaviour
     {
         if (timer <= 0)
         {
+            DamageRange.x = Mathf.RoundToInt(3 * (i_strength * .10f));//recalculate stats, temp call locations
+            DamageRange.y = Mathf.RoundToInt(6 * (i_strength * .10f));
             if (i_health < i_healthMax)
             {
                 i_health += Mathf.RoundToInt(i_healthMax * .02f);
@@ -215,6 +219,7 @@ public class CharacterData : MonoBehaviour
         i_magicMod += 3;
         i_healthMax += 10;
         i_health = i_healthMax;
+        i_level++;
     }
     public void Respawn()
     {
@@ -225,4 +230,17 @@ public class CharacterData : MonoBehaviour
         anim.SetAnimation("Dead", false);
         bt_respawn.SetActive(false);
     }
+    public int GetExp()
+    {
+        return i_EXP;
+    }
+    public int GetExpToNext()
+    {
+        return i_EXPToNext;
+    }
+    public int GetLevel()
+    {
+        return i_level;
+    }
+
 }

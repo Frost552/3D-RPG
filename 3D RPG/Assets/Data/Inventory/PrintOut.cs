@@ -37,6 +37,8 @@ public class PrintOut : MonoBehaviour
         {
             if (bag[i].GetItem() != null)
                 spr[i].sprite = bag[i].GetItem().spr_src;
+            if (bag[i].GetItem() == null)
+                spr[i].sprite = null;
 
             else
                 i = spr.Count + 1;

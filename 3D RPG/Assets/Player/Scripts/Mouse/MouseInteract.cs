@@ -6,9 +6,11 @@ public class MouseInteract : MonoBehaviour
 {
     // Start is called before the first frame update
     CharacterData player;
+    QuestLog questLog;
     public LayerMask mlayer;
     void Start()
     {
+        questLog = GameObject.FindGameObjectWithTag("Player").GetComponent<QuestLog>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterData>();
     }
 
@@ -35,21 +37,31 @@ public class MouseInteract : MonoBehaviour
             {
                 SetTarget(hit.collider.gameObject);
                 if (hit.collider.gameObject.GetComponent<QuestData>() != null)
-                    this.gameObject.GetComponent<QuestLog>().AddQuest(player.GetTarget().GetComponent<QuestData>().GetData());
+                {
+                    gameObject.GetComponent<QuestLog>().AddQuest(player.GetTarget().GetComponent<QuestData>().GetData());
+                }
 
                 if(hit.collider.gameObject.GetComponent<Items>() != null)
                 {
                     this.gameObject.GetComponentInChildren<Inventory>().AddToBag(hit.collider.gameObject.GetComponentInChildren<Items>().GetItem());
                     hit.collider.gameObject.GetComponentInParent<SetActive>().DeactivateObject();
                 }
-                if (hit.collider.gameObject.GetComponent<CharacterData>() != null && hit.collider.gameObject.GetComponent<CharacterData>().GetInteractType() == 3)
+                if (hit.collider.gameObject.GetComponent<CharacterData>() != null)
                 {
-                    if (player.GetAlive() == true)
+                    if(player.GetAlive() == true && hit.collider.gameObject.GetComponent<CharacterData>().GetInteractType() == 2)
+                    {
+                        if(hit.collider.gameObject.GetComponent<CharacterData>().isQuestNPC == true)
+                        {
+                            questLog.CheckQuest(hit.collider.gameObject);
+                        }
+                    }
+                    if (player.GetAlive() == true && hit.collider.gameObject.GetComponent<CharacterData>().GetInteractType() == 3)
                     {
                         player.SetInCombat(true);
                         this.gameObject.GetComponent<BasicAttack>().StartAttack(true);
                     }
                 }
+                
                 else
                     player.SetInCombat(false);
             }

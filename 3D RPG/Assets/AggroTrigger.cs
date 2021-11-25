@@ -32,7 +32,7 @@ public class AggroTrigger : MonoBehaviour
     void FixedUpdate()
     {
 
-        
+       
         StartCoroutine(Aggro(transform.position, AggroRadius));
 
         if (data.GetTarget() == null)
@@ -63,10 +63,11 @@ public class AggroTrigger : MonoBehaviour
             data.ResetDistance();
             AIAggro.RemoveTarget();
         }
-    }
+     }
 
     void SetAggroTarget()
     {
+        
         CharacterData tempData;
         for (int i = 0; i < hitColliders.Length; i++)
         {
@@ -137,7 +138,7 @@ public class AggroTrigger : MonoBehaviour
     IEnumerator Aggro(Vector3 center_, float radius)
     {
         
-        yield return new WaitUntil(() => data.GetInCombat() == false);
+        yield return new WaitUntil(() => data.GetInCombat() == false); //if an NPC spawns to close to the unit on run, this is bug out and not send the AI pathing
         hitColliders = null;
         hitColliders = Physics.OverlapSphere(center_, radius, lMask);
         int i = 0;

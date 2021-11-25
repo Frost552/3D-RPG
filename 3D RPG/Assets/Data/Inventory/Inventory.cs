@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -8,12 +9,11 @@ public class Inventory : MonoBehaviour
     public Items[] item;
     public Dictionary<float, Items> inventory = new Dictionary<float, Items>();
     public List<BagContent> bag = new List<BagContent>();
+    public Text text;
+    int i_money;
+    
 
-    void Start()
-    {
-        
-
-    }
+    
 
     // Update is called once per frame
     void Update()
@@ -39,7 +39,9 @@ public class Inventory : MonoBehaviour
             {
                 if (bag[i].GetItem().i_ID == ItemToAdd_.i_ID) //if there is an item matching IDs already in the bag, Increment that item
                 {
+                    
                     bag[i].IncrementAmount();
+                    GetComponentInParent<QuestLog>().CheckQuest(ItemToAdd_.gameObject);
                     isInBag = true; //The item is in the bag, skip next loop
                 }
             }
@@ -70,16 +72,64 @@ public class Inventory : MonoBehaviour
                    
                     bag[i].AddtoBag(ItemToAdd_);
                     bag[i].IncrementAmount();
+                    GetComponentInParent<QuestLog>().CheckQuest(ItemToAdd_.gameObject);
                     i = bag.Count + 1;
+                  
                 }
             }
         }
+
+
         //toDO
         //dont add item if bag is full
     }
+
+    public void RemoveFromBag(string itemLookup, int AmountToRemove)
+    {
+        for(int i = 0; i < bag.Count; i++)
+        {
+            if (bag[i].GetItem() != null)
+            {
+                if (bag[i].GetItem().s_Name == itemLookup)
+                {
+                    bag[i].DecrementAmount(AmountToRemove);
+                }
+            }
+        }
+    }
     public void AddToDictionary(int i, Items item_)
     {
-        inventory.Add(i, item_);
+        inventory.Add(i, item_); //rewrite without a disctionary
         
+    }
+    public void ReciveMoney(int i_)
+    { //recieve money from source (quest, loot, ect)
+        i_money += i_;
+        UpdateMoneyDisplay();
+    }
+    public void RemoveMoney(int i_)
+    { //remove money
+        i_money -= i_;
+        UpdateMoneyDisplay();
+    }
+    public void UpdateMoneyDisplay()
+    { //update the displayed money
+        text.text = i_money.ToString() + " g";
+    }
+
+    public void CheckItem(string itemlookup_, string QuestName)
+    {
+        
+        for(int i = 0; i < inventory.Count; i++)
+        {
+            if (bag[i].GetItem() != null)
+            {
+                if (bag[i].GetItem().s_Name == itemlookup_)
+                {
+                    print("Found Quest Item");
+                    GetComponentInParent<QuestLog>().UpdateGatherAmount(bag[i].GetItem().i_amount, QuestName, itemlookup_);
+                }
+            }
+        }
     }
 }
