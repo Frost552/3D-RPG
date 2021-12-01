@@ -38,7 +38,7 @@ public class MouseInteract : MonoBehaviour
                 SetTarget(hit.collider.gameObject);
                 if (hit.collider.gameObject.GetComponent<QuestData>() != null)
                 {
-                    gameObject.GetComponent<QuestLog>().AddQuest(player.GetTarget().GetComponent<QuestData>().GetData());
+                    gameObject.GetComponent<QuestLog>().AddQuest(player.GetTarget().GetComponent<QuestList>().GetData());
                 }
 
                 if(hit.collider.gameObject.GetComponent<Items>() != null)

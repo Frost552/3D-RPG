@@ -21,6 +21,7 @@ public class PrintOut : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         UpdateInterface();
             //text.text += inv.inventory[0].s_Name + "\n" + inv.inventory[0].s_Discription + "\n" + inv.inventory[0].itemClass.ToString() + "\n"; 
     }
@@ -31,17 +32,17 @@ public class PrintOut : MonoBehaviour
         text.text = bag[j].GetItem().s_Name + "\n" + bag[j].GetItem().s_Discription + "\nType: " + bag[j].GetItem().itemClass + "\nHeld: " + bag[j].GetItem().i_amount + "\nID: " + bag[j].GetItem().i_ID;
     }
 
-    public void UpdateInterface()
+    public void UpdateInterface()//updates sprites and item info in inventory
     {
         for(int i = 0; i < spr.Count; i++)
         {
             if (bag[i].GetItem() != null)
                 spr[i].sprite = bag[i].GetItem().spr_src;
-            if (bag[i].GetItem() == null)
+            else if (bag[i].GetItem() == null)
                 spr[i].sprite = null;
 
             else
-                i = spr.Count + 1;
+                break;
         }
     }
 

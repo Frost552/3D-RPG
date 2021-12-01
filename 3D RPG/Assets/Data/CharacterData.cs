@@ -13,7 +13,7 @@ public class CharacterData : MonoBehaviour
     public Sprite img_icon;
     public GameObject target;
     public float distance;
-    public bool inCombat, isQuestNPC;
+    public bool inCombat, isQuestNPC, givenCredit;
     bool isAlive;
     int expMod = 1;
     public int i_EXP;
@@ -23,6 +23,7 @@ public class CharacterData : MonoBehaviour
     float timer;
     public GameObject bt_respawn;
     public GameObject GraveYard;
+    public GameObject TaggingPlayer;
 
     public enum InteractType
     {
@@ -155,10 +156,14 @@ public class CharacterData : MonoBehaviour
     }
     public void SetInCombat(bool b_)
     {
+        if (b_ == false)
+            TaggingPlayer = null;
         inCombat = b_;
     }
-    public void TakeDamage(int i_)
+    public void TakeDamage(int i_, GameObject playertagging)
     {
+        if (TaggingPlayer == null && NPCType == InteractType.Hostile)
+            TaggingPlayer = playertagging;
         anim.SetAnimation("TakeDamage", true);
         i_health -= i_;
         if (i_health <= 0)
@@ -191,6 +196,11 @@ public class CharacterData : MonoBehaviour
         if (GetInteractType() == 0)
         {
             bt_respawn.SetActive(true);
+        }
+        if (givenCredit == false)
+        {
+            TaggingPlayer.GetComponent<QuestLog>().UpdateKillAmount(this);
+            givenCredit = true;
         }
         StartCoroutine(Decay());
     }
@@ -242,5 +252,6 @@ public class CharacterData : MonoBehaviour
     {
         return i_level;
     }
+    
 
 }

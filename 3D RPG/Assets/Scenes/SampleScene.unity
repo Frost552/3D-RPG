@@ -164,16 +164,18 @@ MonoBehaviour:
   i_magicMod: 0
   i_level: 0
   DamageRange: {x: 0, y: 0}
-  s_name: Tin
-  img_icon: {fileID: 21300000, guid: 7a6d8e058daee264d93b2a433a1ce481, type: 3}
+  s_name: Copper
+  img_icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   target: {fileID: 0}
   distance: 0
   inCombat: 0
   isQuestNPC: 0
+  givenCredit: 0
   i_EXP: 0
   i_EXPToNext: 0
   bt_respawn: {fileID: 0}
   GraveYard: {fileID: 0}
+  TaggingPlayer: {fileID: 0}
   NPCType: 1
 --- !u!65 &10292689
 BoxCollider:
@@ -246,7 +248,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10292687}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -52.683, y: 70.70539, z: 130.85512}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1288402988}
@@ -845,6 +847,53 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: b610c12dfb915564fa7d6ed9771555e3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79b50b34e44b5fd4db1cdc9535a3c86b, type: 3}
+--- !u!1 &21465229
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 21465231}
+  - component: {fileID: 21465230}
+  m_Layer: 0
+  m_Name: TutorialQuestSeries
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &21465230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21465229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6df114baacb4f4fb64de22e5a26c4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestSeries:
+  - {fileID: 0}
+  nextSeries: {fileID: 0}
+  SeriesEnabled: 0
+--- !u!4 &21465231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21465229}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.5456314, y: 1.3824816, z: 16.018265}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &74349177
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,6 +1002,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 372574028911202507, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
+      propertyPath: s_name
+      value: Creature
+      objectReference: {fileID: 0}
+    - target: {fileID: 372574028911202507, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: NPCType
       value: 3
       objectReference: {fileID: 0}
@@ -970,7 +1023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 372574028911202511, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: lMask.m_Bits
-      value: 256
+      value: 384
       objectReference: {fileID: 0}
     - target: {fileID: 372574028911202517, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: m_RootOrder
@@ -1157,10 +1210,12 @@ MonoBehaviour:
   distance: 0
   inCombat: 0
   isQuestNPC: 0
+  givenCredit: 0
   i_EXP: 0
   i_EXPToNext: 0
   bt_respawn: {fileID: 0}
   GraveYard: {fileID: 0}
+  TaggingPlayer: {fileID: 0}
   NPCType: 0
 --- !u!135 &138724311
 SphereCollider:
@@ -1492,6 +1547,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 372574028911202507, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
+      propertyPath: s_name
+      value: Creature
+      objectReference: {fileID: 0}
     - target: {fileID: 372574028911202509, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: m_Name
       value: PurpleDragon (223)
@@ -1502,7 +1561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 372574028911202511, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: lMask.m_Bits
-      value: 256
+      value: 384
       objectReference: {fileID: 0}
     - target: {fileID: 372574028911202517, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: m_RootOrder
@@ -1993,10 +2052,12 @@ MonoBehaviour:
   distance: 0
   inCombat: 0
   isQuestNPC: 0
+  givenCredit: 0
   i_EXP: 0
   i_EXPToNext: 0
   bt_respawn: {fileID: 0}
   GraveYard: {fileID: 0}
+  TaggingPlayer: {fileID: 0}
   NPCType: 2
 --- !u!136 &274825463
 CapsuleCollider:
@@ -3378,10 +3439,12 @@ MonoBehaviour:
   distance: 0
   inCombat: 0
   isQuestNPC: 0
+  givenCredit: 0
   i_EXP: 0
   i_EXPToNext: 0
   bt_respawn: {fileID: 0}
   GraveYard: {fileID: 0}
+  TaggingPlayer: {fileID: 0}
   NPCType: 2
 --- !u!4 &626554549 stripped
 Transform:
@@ -3439,6 +3502,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 372574028911202507, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
+      propertyPath: s_name
+      value: Creature
+      objectReference: {fileID: 0}
     - target: {fileID: 372574028911202509, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: m_Name
       value: PurpleDragon (221)
@@ -3449,7 +3516,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 372574028911202511, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: lMask.m_Bits
-      value: 256
+      value: 384
       objectReference: {fileID: 0}
     - target: {fileID: 372574028911202517, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: m_RootOrder
@@ -3837,10 +3904,12 @@ MonoBehaviour:
   distance: 0
   inCombat: 0
   isQuestNPC: 0
+  givenCredit: 0
   i_EXP: 0
   i_EXPToNext: 0
   bt_respawn: {fileID: 0}
   GraveYard: {fileID: 0}
+  TaggingPlayer: {fileID: 0}
   NPCType: 1
 --- !u!65 &716106894
 BoxCollider:
@@ -3913,7 +3982,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716106891}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.6}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1457234256}
@@ -3941,6 +4010,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 372574028911202507, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
+      propertyPath: s_name
+      value: Creature
+      objectReference: {fileID: 0}
+    - target: {fileID: 372574028911202507, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: NPCType
       value: 3
       objectReference: {fileID: 0}
@@ -3958,7 +4031,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 372574028911202511, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: lMask.m_Bits
-      value: 256
+      value: 384
       objectReference: {fileID: 0}
     - target: {fileID: 372574028911202517, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: m_RootOrder
@@ -4704,7 +4777,7 @@ MonoBehaviour:
   - {fileID: 1052520123}
   - {fileID: 1126173119}
   - {fileID: 702188962}
-  inv: {fileID: 0}
+  inv: {fileID: 771030943}
   bag:
   - {fileID: 367306950}
   - {fileID: 921161575}
@@ -5211,6 +5284,7 @@ GameObject:
   - component: {fileID: 1007299640}
   - component: {fileID: 1007299641}
   - component: {fileID: 1007299642}
+  - component: {fileID: 1007299643}
   m_Layer: 0
   m_Name: Onyxae
   m_TagString: NPC
@@ -5245,9 +5319,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questID: 1
+  posInSeries: 0
   questType: Gather
   questName: Gather some Copper Ore
   targetName: Onyxae
+  TurnInName: Onyxae
   itemsNeeded: Copper Ore
   objectiveCount: 0
   objectiveCountNeeded: 5
@@ -5257,7 +5333,6 @@ MonoBehaviour:
   questDetails: Gather 5 units of Copper Ore for me, would ya?
   expRward: 100
   moneyReward: 100
-  NextQuest: {fileID: 1007299641}
 --- !u!114 &1007299637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5283,10 +5358,12 @@ MonoBehaviour:
   distance: 0
   inCombat: 0
   isQuestNPC: 1
+  givenCredit: 0
   i_EXP: 0
   i_EXPToNext: 0
   bt_respawn: {fileID: 0}
   GraveYard: {fileID: 0}
+  TaggingPlayer: {fileID: 0}
   NPCType: 2
 --- !u!135 &1007299638
 SphereCollider:
@@ -5309,7 +5386,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1007299634}
   m_LocalRotation: {x: -0, y: 0.4682489, z: -0, w: 0.8835966}
-  m_LocalPosition: {x: 7.62, y: 0.104, z: 12.01}
+  m_LocalPosition: {x: 49.01, y: 0.104, z: 29.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 74349178}
@@ -5347,9 +5424,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questID: 0
+  posInSeries: 1
   questType: Gather
   questName: Get me Tin!
   targetName: Onyxae
+  TurnInName: Onyxae
   itemsNeeded: Tin Ore
   objectiveCount: 0
   objectiveCountNeeded: 5
@@ -5359,7 +5438,6 @@ MonoBehaviour:
   questDetails: Now Get Me some Tin why don't you?
   expRward: 100
   moneyReward: 100
-  NextQuest: {fileID: 1007299642}
 --- !u!114 &1007299642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5373,19 +5451,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questID: 3
+  posInSeries: 2
   questType: Talk
   questName: Continuing on
   targetName: Slayer
+  TurnInName: Slayer
   itemsNeeded: 
   objectiveCount: 0
   objectiveCountNeeded: 0
   b_active: 0
   b_finished: 0
   b_available: 0
-  questDetails: Continue on through this Canyon and talk with Master Slayer
+  questDetails: Continue on through this Canyon and talk with Master Slayer!
   expRward: 50
   moneyReward: 0
-  NextQuest: {fileID: 0}
+--- !u!114 &1007299643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007299634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6df114baacb4f4fb64de22e5a26c4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestSeries:
+  - {fileID: 1007299636}
+  - {fileID: 1007299641}
+  - {fileID: 1007299642}
+  nextSeries: {fileID: 1897575980}
+  SeriesEnabled: 0
 --- !u!1 &1030401335
 GameObject:
   m_ObjectHideFlags: 0
@@ -6100,6 +6197,7 @@ GameObject:
   - component: {fileID: 1184328319}
   - component: {fileID: 1184328320}
   - component: {fileID: 1184328315}
+  - component: {fileID: 1184328316}
   m_Layer: 0
   m_Name: Shikki
   m_TagString: NPC
@@ -6132,6 +6230,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca2f1e77351976d4cbf95db3ca44c861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1184328316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184328313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6df114baacb4f4fb64de22e5a26c4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestSeries:
+  - {fileID: 1184328319}
+  nextSeries: {fileID: 1007299643}
+  SeriesEnabled: 1
 --- !u!4 &1184328317
 Transform:
   m_ObjectHideFlags: 0
@@ -6174,10 +6288,12 @@ MonoBehaviour:
   distance: 0
   inCombat: 0
   isQuestNPC: 0
+  givenCredit: 0
   i_EXP: 0
   i_EXPToNext: 0
   bt_respawn: {fileID: 0}
   GraveYard: {fileID: 0}
+  TaggingPlayer: {fileID: 0}
   NPCType: 2
 --- !u!114 &1184328319
 MonoBehaviour:
@@ -6192,19 +6308,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questID: 1
+  posInSeries: 0
   questType: Talk
   questName: Down the Road
   targetName: Onyxae
+  TurnInName: Onyxae
   itemsNeeded: 
   objectiveCount: 0
   objectiveCountNeeded: 0
   b_active: 0
   b_finished: 0
-  b_available: 0
+  b_available: 1
   questDetails: Walk down the road and talk to my friend, Onyxae!
   expRward: 100
   moneyReward: 105
-  NextQuest: {fileID: 1007299636}
 --- !u!136 &1184328320
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6447,10 +6564,12 @@ MonoBehaviour:
   distance: 0
   inCombat: 0
   isQuestNPC: 0
+  givenCredit: 0
   i_EXP: 0
   i_EXPToNext: 400
   bt_respawn: {fileID: 372478182}
   GraveYard: {fileID: 626656981}
+  TaggingPlayer: {fileID: 0}
   NPCType: 0
 --- !u!114 &1216140483
 MonoBehaviour:
@@ -7243,6 +7362,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 372574028911202507, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
+      propertyPath: s_name
+      value: Creature
+      objectReference: {fileID: 0}
     - target: {fileID: 372574028911202509, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: m_Name
       value: PurpleDragon (216)
@@ -7253,7 +7376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 372574028911202511, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: lMask.m_Bits
-      value: 256
+      value: 384
       objectReference: {fileID: 0}
     - target: {fileID: 372574028911202517, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: m_RootOrder
@@ -7672,6 +7795,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 372574028911202507, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
+      propertyPath: s_name
+      value: Creature
+      objectReference: {fileID: 0}
+    - target: {fileID: 372574028911202507, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: NPCType
       value: 3
       objectReference: {fileID: 0}
@@ -7689,7 +7816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 372574028911202511, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: lMask.m_Bits
-      value: 256
+      value: 384
       objectReference: {fileID: 0}
     - target: {fileID: 372574028911202517, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: m_RootOrder
@@ -7820,7 +7947,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: sada
+  m_Text: 
 --- !u!222 &1516923754
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7873,7 +8000,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544466654}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 53.284, y: 0.489, z: 32.674}
+  m_LocalPosition: {x: 59.3, y: 0.46, z: 20.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 716106897}
@@ -8271,6 +8398,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 372574028911202507, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
+      propertyPath: s_name
+      value: Creature
+      objectReference: {fileID: 0}
+    - target: {fileID: 372574028911202507, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: NPCType
       value: 3
       objectReference: {fileID: 0}
@@ -8288,7 +8419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 372574028911202511, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: lMask.m_Bits
-      value: 256
+      value: 384
       objectReference: {fileID: 0}
     - target: {fileID: 372574028911202517, guid: b7951d988245ef64dabe60c0d5661148, type: 3}
       propertyPath: m_RootOrder
@@ -9040,6 +9171,9 @@ GameObject:
   - component: {fileID: 1897575977}
   - component: {fileID: 1897575979}
   - component: {fileID: 1897575978}
+  - component: {fileID: 1897575976}
+  - component: {fileID: 1897575981}
+  - component: {fileID: 1897575980}
   m_Layer: 8
   m_Name: Slayer
   m_TagString: NPC
@@ -9063,7 +9197,7 @@ MonoBehaviour:
   lMask:
     serializedVersion: 2
     m_Bits: 512
-  AggroRadius: 1000
+  AggroRadius: 20
   hitColliders: []
   closestTarget: 0
   tempObj: {fileID: 0}
@@ -9080,7 +9214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  reach: 20
+  reach: 10
   timer: 1
   f_attackDelay: 2
 --- !u!136 &1897575973
@@ -9139,11 +9273,26 @@ MonoBehaviour:
   distance: 0
   inCombat: 0
   isQuestNPC: 1
+  givenCredit: 0
   i_EXP: 0
   i_EXPToNext: 0
   bt_respawn: {fileID: 0}
   GraveYard: {fileID: 0}
+  TaggingPlayer: {fileID: 0}
   NPCType: 2
+--- !u!135 &1897575976
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897575970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1897575977
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9196,6 +9345,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goal: {fileID: 1216140480}
   orgin: {fileID: 0}
+--- !u!114 &1897575980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897575970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a6df114baacb4f4fb64de22e5a26c4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QuestSeries:
+  - {fileID: 1897575981}
+  nextSeries: {fileID: 0}
+  SeriesEnabled: 0
+--- !u!114 &1897575981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897575970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 747ac0da4d9636048b6e6c1d40951d8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 4
+  posInSeries: 0
+  questType: Combat
+  questName: Defeat them
+  targetName: Creature
+  TurnInName: Slayer
+  itemsNeeded: 
+  objectiveCount: 0
+  objectiveCountNeeded: 5
+  b_active: 0
+  b_finished: 0
+  b_available: 0
+  questDetails: Go out east and defeat 5 creatures
+  expRward: 200
+  moneyReward: 200
 --- !u!1 &1903260596
 GameObject:
   m_ObjectHideFlags: 0
@@ -10320,7 +10512,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2093922957}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 102.62228, y: -70.21639, z: -98.181114}
+  m_LocalPosition: {x: 40.8, y: 1.46, z: 32.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 10292692}

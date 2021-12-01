@@ -9,6 +9,7 @@ public class QuestLog : MonoBehaviour
     public QuestLogUI LogUI;
     int lognum;
     public Inventory inv;
+ 
    
     public void UpdateQuestLog()
     {
@@ -52,10 +53,16 @@ public class QuestLog : MonoBehaviour
                     break;
                 }
             }
-            if (Quests[i].questType == "Combat")//check if a kill requirment
+            
+            if(Quests[i].questType == "Combat")
             {
-
+                if(Quests[i].TurnInName == obj_.name && Quests[i].objectiveCount >= Quests[i].objectiveCountNeeded)
+                {
+                    FinishQuest(i);
+                    break;
+                }
             }
+
             if (Quests[i].questType == "Gather") //check for gathering requirment 
             {
                 if (obj_.GetComponent<Items>() != null)
@@ -63,7 +70,7 @@ public class QuestLog : MonoBehaviour
                     
                         if (Quests[i].itemsNeeded == obj_.GetComponent<Items>().s_Name)
                         {
-                            print("Found Quest");
+                            
                             inv.CheckItem(obj_.GetComponent<Items>().s_Name, Quests[i].questName);
                             
                         }
@@ -85,9 +92,16 @@ public class QuestLog : MonoBehaviour
         GetComponentInChildren<Inventory>().ReciveMoney(Quests[i].moneyReward);
         RemoveQuest(i);
     }
-    public void UpdateKillAmount()
+    public void UpdateKillAmount(CharacterData obj_)
     {
-
+        for (int i = 0; i < Quests.Count; i++)
+        {
+            if(Quests[i].targetName == obj_.s_name)
+            {
+                Quests[i].objectiveCount++;
+                UpdateUI();
+            }
+        }
     }
     public void UpdateGatherAmount(int i_, string questName_ ,string itemName_)
     {

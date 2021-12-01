@@ -39,6 +39,15 @@ public class QuestLogUI : MonoBehaviour
                     text.text += questLog.GetQuest(i).objectiveCount + "/" + questLog.GetQuest(i).objectiveCountNeeded + " " + questLog.GetQuest(i).itemsNeeded + "\n";
 
             }
+            if (questLog.GetQuest(i).questType == "Combat")
+            {
+                if (questLog.GetQuest(i).objectiveCount >= questLog.GetQuest(i).objectiveCountNeeded)
+                    text.text += "<color=green><b><i>" + questLog.GetQuest(i).objectiveCount + "/" + questLog.GetQuest(i).objectiveCountNeeded + " " + questLog.GetQuest(i).itemsNeeded + "</i></b></color>\n";
+
+                else
+                    text.text += questLog.GetQuest(i).objectiveCount + "/" + questLog.GetQuest(i).objectiveCountNeeded + " " + questLog.GetQuest(i).itemsNeeded + "\n";
+
+            }
 
 
         }

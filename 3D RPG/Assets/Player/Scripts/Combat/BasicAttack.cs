@@ -52,7 +52,7 @@ public class BasicAttack : MonoBehaviour
                     //attack anim
                     anim.SetAnimation("basicAttack", true);
                     //deal damage
-                    player.GetTarget().GetComponent<CharacterData>().TakeDamage(Random.Range(Mathf.RoundToInt(player.DamageRange.x), Mathf.RoundToInt(player.DamageRange.y)));
+                    player.GetTarget().GetComponent<CharacterData>().TakeDamage(Random.Range(Mathf.RoundToInt(player.DamageRange.x), Mathf.RoundToInt(player.DamageRange.y)), gameObject);
                     timer = f_attackDelay;//reset swing timer
 
                 }
