@@ -25,7 +25,7 @@ public class QuestList : MonoBehaviour
     {
         if (QuestSeries[i].CheckAvailable() && SeriesEnabled)
         {
-            QuestSeries[i].b_active = true;
+            //QuestSeries[i].b_active = true;
             return true;
         }
         else return false;

@@ -48,8 +48,8 @@ public class QuestLog : MonoBehaviour
             {
                 if(Quests[i].targetName == obj_.name) //check for the needed NPC vs the targeted NPC
                 {
-                    
-                    FinishQuest(i);
+                    Quests[i].b_completeable = true;
+                    //FinishQuest(i);
                     break;
                 }
             }
@@ -58,7 +58,8 @@ public class QuestLog : MonoBehaviour
             {
                 if(Quests[i].TurnInName == obj_.name && Quests[i].objectiveCount >= Quests[i].objectiveCountNeeded)
                 {
-                    FinishQuest(i);
+                    Quests[i].b_completeable = true;
+                    //FinishQuest(i);
                     break;
                 }
             }
@@ -78,19 +79,25 @@ public class QuestLog : MonoBehaviour
                 }
                 if (obj_.name == Quests[i].targetName && Quests[i].objectiveCount >= Quests[i].objectiveCountNeeded)
                 {
+                    Quests[i].b_completeable = true;
                     inv.RemoveFromBag(Quests[i].itemsNeeded, Quests[i].objectiveCountNeeded);
-                    FinishQuest(i);
+                    //FinishQuest(i);
                 }
             }
         }
     }
-    private void FinishQuest(int i)
+    public void FinishQuest()
     {//finish the quest and give out rewards 
-
-        Quests[i].SetFinished();
-        GetComponent<CharacterData>().ReciveEXP(Quests[i].expRward);
-        GetComponentInChildren<Inventory>().ReciveMoney(Quests[i].moneyReward);
-        RemoveQuest(i);
+        for (int i = 0; i < Quests.Count; i++)
+        {
+            if (Quests[i].b_completeable == true)
+            {
+                Quests[i].SetFinished();
+                GetComponent<CharacterData>().ReciveEXP(Quests[i].expRward);
+                GetComponentInChildren<Inventory>().ReciveMoney(Quests[i].moneyReward);
+                RemoveQuest(i);
+            }
+        }
     }
     public void UpdateKillAmount(CharacterData obj_)
     {

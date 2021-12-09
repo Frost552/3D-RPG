@@ -10,9 +10,10 @@ public class PrintOut : MonoBehaviour
     public List<Image> spr = new List<Image>();
     public Inventory inv;
     public List<BagContent> bag = new List<BagContent>();
+    public Image img_BG;
     void Start()
     {
-        
+        img_BG.enabled = false;
         text = gameObject.GetComponent<Text>();
         //spr[0].sprite = inv.inventory[1].spr_src;
 
@@ -28,9 +29,13 @@ public class PrintOut : MonoBehaviour
    
     public void DisplayInfo(int j)
     {
-        if(bag[j].GetItem() != null)
-        text.text = bag[j].GetItem().s_Name + "\n" + bag[j].GetItem().s_Discription + "\nType: " + bag[j].GetItem().itemClass + "\nHeld: " + bag[j].GetItem().i_amount + "\nID: " + bag[j].GetItem().i_ID;
-    }
+        if (bag[j].GetItem() != null)
+        {
+            text.text = bag[j].GetItem().s_Name + "\n" + bag[j].GetItem().s_Discription + "\nType: " + bag[j].GetItem().itemClass + "\nHeld: " + bag[j].GetItem().i_amount + "\nID: " + bag[j].GetItem().i_ID;
+            img_BG.enabled = true;
+        }
+        }
+
 
     public void UpdateInterface()//updates sprites and item info in inventory
     {
@@ -48,6 +53,7 @@ public class PrintOut : MonoBehaviour
 
     public void HideInfo()
     {
+        img_BG.enabled = false;
         text.text = "";
     }
 

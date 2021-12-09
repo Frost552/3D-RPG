@@ -11,7 +11,7 @@ public class QuestData : MonoBehaviour
     public string itemsNeeded;
     public int objectiveCount;
     public int objectiveCountNeeded;
-    public bool b_active, b_finished, b_available;
+    public bool b_active, b_finished, b_available, b_completeable;
     public string questDetails;
     public int expRward, moneyReward;
     GameObject questSource;

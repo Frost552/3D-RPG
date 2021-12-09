@@ -9,7 +9,7 @@ public class UpdateTargetUI : MonoBehaviour
     // Start is called before the first frame update
     public Text t_name, t_health, t_distance;
     public Slider slide_health;
-    public Image spr_image, spr_border, spr_mask;
+    public Image spr_image, spr_border, spr_mask, spr_bg;
     CharacterData PlayerTarget;
     GameObject Target;
     CharacterData TargetUIData;
@@ -39,6 +39,7 @@ public class UpdateTargetUI : MonoBehaviour
             t_distance.enabled = false;
             spr_border.enabled = false;
             spr_mask.enabled = false;
+            spr_bg.enabled = false;
 
         }
     }
@@ -71,6 +72,7 @@ public class UpdateTargetUI : MonoBehaviour
             t_distance.enabled = true;
             spr_border.enabled = true;
             spr_mask.enabled = true;
+            spr_bg.enabled = true;
             t_name.text = TargetUIData.GetName();
             spr_image.sprite = TargetUIData.GetSprite();
             spr_image.color = color;

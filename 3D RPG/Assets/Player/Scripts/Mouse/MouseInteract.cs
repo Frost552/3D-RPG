@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class MouseInteract : MonoBehaviour
@@ -8,6 +9,7 @@ public class MouseInteract : MonoBehaviour
     CharacterData player;
     QuestLog questLog;
     public LayerMask mlayer;
+    public GameObject InteractWindow;
     void Start()
     {
         questLog = GameObject.FindGameObjectWithTag("Player").GetComponent<QuestLog>();
@@ -21,7 +23,7 @@ public class MouseInteract : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(ray, out hit, 100.0f))
+            if(Physics.Raycast(ray, out hit, 100.0f, mlayer))
             {
                 
                 SetTarget(hit.collider.gameObject);
@@ -33,12 +35,17 @@ public class MouseInteract : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, 100.0f))
+            if (Physics.Raycast(ray, out hit, 100.0f, mlayer))
             {
                 SetTarget(hit.collider.gameObject);
                 if (hit.collider.gameObject.GetComponent<QuestData>() != null)
                 {
-                    gameObject.GetComponent<QuestLog>().AddQuest(player.GetTarget().GetComponent<QuestList>().GetData());
+                    if (hit.collider.gameObject.GetComponent<QuestList>().GetData() != null)
+                    {
+                        InteractWindow.SetActive(true);
+                        InteractWindow.GetComponent<QuestWindow>().QueueUpQuest((player.GetTarget().GetComponent<QuestList>().GetData()));
+                    }
+                    //gameObject.GetComponent<QuestLog>().AddQuest(player.GetTarget().GetComponent<QuestList>().GetData());
                 }
 
                 if(hit.collider.gameObject.GetComponent<Items>() != null)

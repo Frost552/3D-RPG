@@ -6,11 +6,11 @@ using UnityEngine;
 public class LookAtCamera : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Camera camera;
+    public GameObject camera;
     
     void Start()
     {
-        
+        camera = GameObject.FindGameObjectWithTag("MainCamera");
        
         
     }
