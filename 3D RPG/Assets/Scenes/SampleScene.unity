@@ -1231,7 +1231,7 @@ GameObject:
   - component: {fileID: 102225579}
   - component: {fileID: 102225581}
   - component: {fileID: 102225580}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1255,7 +1255,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &102225580
 MonoBehaviour:
@@ -1416,7 +1416,7 @@ GameObject:
   - component: {fileID: 145286467}
   m_Layer: 5
   m_Name: BagSlot5
-  m_TagString: Untagged
+  m_TagString: BagSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1523,7 +1523,7 @@ GameObject:
   - component: {fileID: 147135022}
   m_Layer: 5
   m_Name: BagSlot7
-  m_TagString: Untagged
+  m_TagString: BagSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1626,7 +1626,7 @@ GameObject:
   - component: {fileID: 153153387}
   - component: {fileID: 153153389}
   - component: {fileID: 153153388}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1650,7 +1650,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &153153388
 MonoBehaviour:
@@ -2150,7 +2150,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &264430300
 MonoBehaviour:
@@ -2513,7 +2513,7 @@ GameObject:
   - component: {fileID: 367306950}
   m_Layer: 5
   m_Name: BagSlot1
-  m_TagString: Untagged
+  m_TagString: BagSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2567,7 +2567,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.025458645, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3173,7 +3173,7 @@ GameObject:
   - component: {fileID: 480453946}
   - component: {fileID: 480453948}
   - component: {fileID: 480453947}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3197,7 +3197,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &480453947
 MonoBehaviour:
@@ -3285,7 +3285,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0da84f15704d9fb44a3f6b2c6332ca78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overUI: 0
   player: {fileID: 0}
+  m_layer:
+    serializedVersion: 2
+    m_Bits: 32
 --- !u!1 &503737967
 GameObject:
   m_ObjectHideFlags: 0
@@ -3295,6 +3299,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 503737968}
+  - component: {fileID: 503737969}
   m_Layer: 5
   m_Name: Bag
   m_TagString: Untagged
@@ -3337,6 +3342,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &503737969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503737967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2ef4fd6f355be54ea24ac55d0ac64a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_layer:
+    serializedVersion: 2
+    m_Bits: 32
 --- !u!1 &508142405
 GameObject:
   m_ObjectHideFlags: 0
@@ -3767,7 +3787,7 @@ GameObject:
   - component: {fileID: 579963194}
   - component: {fileID: 579963196}
   - component: {fileID: 579963195}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3791,7 +3811,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &579963195
 MonoBehaviour:
@@ -4233,7 +4253,7 @@ GameObject:
   - component: {fileID: 702188966}
   m_Layer: 5
   m_Name: BagSlot12
-  m_TagString: Untagged
+  m_TagString: BagSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5094,7 +5114,7 @@ GameObject:
   - component: {fileID: 807561557}
   - component: {fileID: 807561559}
   - component: {fileID: 807561558}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5455,7 +5475,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0
-  m_Text: <b>Accept</b>
+  m_Text: <b>Complete</b>
 --- !u!222 &877622503
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5595,7 +5615,7 @@ GameObject:
   - component: {fileID: 888084937}
   - component: {fileID: 888084939}
   - component: {fileID: 888084938}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5619,7 +5639,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &888084938
 MonoBehaviour:
@@ -5757,7 +5777,7 @@ GameObject:
   - component: {fileID: 921161575}
   m_Layer: 5
   m_Name: BagSlot2
-  m_TagString: Untagged
+  m_TagString: BagSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6282,7 +6302,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 0
-  m_Text: '<b>Decline</b>
+  m_Text: '<b>Close</b>
 
 '
 --- !u!222 &985324907
@@ -6732,7 +6752,7 @@ GameObject:
   - component: {fileID: 1030401336}
   - component: {fileID: 1030401338}
   - component: {fileID: 1030401337}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6756,7 +6776,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1030401337
 MonoBehaviour:
@@ -6854,7 +6874,7 @@ GameObject:
   - component: {fileID: 1052520125}
   m_Layer: 5
   m_Name: BagSlot10
-  m_TagString: Untagged
+  m_TagString: BagSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7288,7 +7308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1119910668
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7376,7 +7396,7 @@ GameObject:
   - component: {fileID: 1126173123}
   m_Layer: 5
   m_Name: BagSlot11
-  m_TagString: Untagged
+  m_TagString: BagSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7672,7 +7692,7 @@ GameObject:
   - component: {fileID: 1158301915}
   - component: {fileID: 1158301917}
   - component: {fileID: 1158301916}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7696,7 +7716,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1158301916
 MonoBehaviour:
@@ -8214,6 +8234,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 833
   InteractWindow: {fileID: 1101078489}
+  finishWindow: {fileID: 1119910667}
 --- !u!114 &1216140484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8682,7 +8703,7 @@ GameObject:
   - component: {fileID: 1354864017}
   - component: {fileID: 1354864019}
   - component: {fileID: 1354864018}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8706,7 +8727,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1354864018
 MonoBehaviour:
@@ -8840,7 +8861,7 @@ GameObject:
   - component: {fileID: 1359059852}
   m_Layer: 5
   m_Name: BagSlot9
-  m_TagString: Untagged
+  m_TagString: BagSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9361,7 +9382,7 @@ GameObject:
   - component: {fileID: 1453681053}
   m_Layer: 5
   m_Name: BagSlot3
-  m_TagString: Untagged
+  m_TagString: BagSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9982,7 +10003,7 @@ GameObject:
   - component: {fileID: 1568085835}
   - component: {fileID: 1568085837}
   - component: {fileID: 1568085836}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10006,7 +10027,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1568085836
 MonoBehaviour:
@@ -10485,7 +10506,7 @@ GameObject:
   - component: {fileID: 1718719261}
   m_Layer: 5
   m_Name: BagSlot8
-  m_TagString: Untagged
+  m_TagString: BagSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11782,7 +11803,7 @@ GameObject:
   - component: {fileID: 1966271446}
   - component: {fileID: 1966271448}
   - component: {fileID: 1966271447}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11806,7 +11827,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1966271447
 MonoBehaviour:
@@ -12484,7 +12505,7 @@ GameObject:
   - component: {fileID: 2053469938}
   - component: {fileID: 2053469940}
   - component: {fileID: 2053469939}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12508,7 +12529,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2053469939
 MonoBehaviour:
@@ -12782,7 +12803,7 @@ GameObject:
   - component: {fileID: 2104322741}
   m_Layer: 5
   m_Name: BagSlot6
-  m_TagString: Untagged
+  m_TagString: BagSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12989,7 +13010,7 @@ GameObject:
   - component: {fileID: 2132354872}
   m_Layer: 5
   m_Name: BagSlot4
-  m_TagString: Untagged
+  m_TagString: BagSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

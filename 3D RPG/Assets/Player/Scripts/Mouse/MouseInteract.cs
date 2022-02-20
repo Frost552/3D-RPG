@@ -9,7 +9,7 @@ public class MouseInteract : MonoBehaviour
     CharacterData player;
     QuestLog questLog;
     public LayerMask mlayer;
-    public GameObject InteractWindow;
+    public GameObject InteractWindow, finishWindow;
     void Start()
     {
         questLog = GameObject.FindGameObjectWithTag("Player").GetComponent<QuestLog>();
@@ -40,11 +40,29 @@ public class MouseInteract : MonoBehaviour
                 SetTarget(hit.collider.gameObject);
                 if (hit.collider.gameObject.GetComponent<QuestData>() != null)
                 {
-                    if (hit.collider.gameObject.GetComponent<QuestList>().GetData() != null)
-                    {
-                        InteractWindow.SetActive(true);
-                        InteractWindow.GetComponent<QuestWindow>().QueueUpQuest((player.GetTarget().GetComponent<QuestList>().GetData()));
-                    }
+                    print("1");
+                   // if (hit.collider.gameObject.GetComponent<QuestList>().GetComplete() != null)
+                    //{
+                        print("2");
+                        for (int i = 0; i < questLog.Quests.Count; i++)
+                        {
+                            print(hit.collider.name);
+                            if (questLog.GetQuest(i).TurnInName == hit.collider.name)
+                            {
+                                finishWindow.SetActive(true);
+                            }
+                        }
+                   // }
+                       if (hit.collider.gameObject.GetComponent<QuestData>() != null)
+                        {
+                            if (hit.collider.gameObject.GetComponent<QuestList>().GetData().b_available == true)//needs fixed
+                             {
+                            InteractWindow.SetActive(true);
+                            InteractWindow.GetComponent<QuestWindow>().QueueUpQuest((player.GetTarget().GetComponent<QuestList>().GetData()));
+                             }
+                        }
+                        
+                    
                     //gameObject.GetComponent<QuestLog>().AddQuest(player.GetTarget().GetComponent<QuestList>().GetData());
                 }
 

@@ -17,6 +17,18 @@ public class QuestList : MonoBehaviour
         {
             if (CheckQuestAvailable(i) == true)
                 return QuestSeries[i];
+            if (QuestSeries[i].b_active == true)
+                return QuestSeries[i];
+        }
+
+        return null;
+    }
+    public QuestData GetComplete()
+    {
+       for(int i = 0; i < QuestSeries.Length; i++)
+        {
+            if (CheckComplete(i) == true)
+                return QuestSeries[i];
 
         }
         return null;
@@ -24,6 +36,15 @@ public class QuestList : MonoBehaviour
     public bool CheckQuestAvailable(int i)
     {
         if (QuestSeries[i].CheckAvailable() && SeriesEnabled)
+        {
+            //QuestSeries[i].b_active = true;
+            return true;
+        }
+        else return false;
+    }
+    public bool CheckComplete(int i)
+    {
+        if (QuestSeries[i].b_completeable && SeriesEnabled)
         {
             //QuestSeries[i].b_active = true;
             return true;
